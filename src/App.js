@@ -1,69 +1,53 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Die from "./components/Die"
 import Dice from "./components/Dice"
+import Hardcore from "./components/Hardcore"
+import Difficulty from './components/Difficulty';
+import Scratch from './components/Scratch';
 
 
 function App() {
-  const [dice, setDice] = useState([]) //dice is a list of numbers
-  const [diceNumberOf, setDiceNumberOf] = useState(5)
-  const [hardcore, setHardcore] = useState(false)
+  const [diceRowValues, setDiceRowValues] = useState([]) //list of {diceNumberOf} dice values in one row
+  const [diceNumberOf, setDiceNumberOf] = useState(3)
+  const [hardcore, setHardcore] = useState(true)
 
-  function generateRow() {
-    const numbers = [] //list of {diceNumberOf} dice values in one row
-    if (hardcore === true) {
-      for (let index = 0; index < diceNumberOf * diceNumberOf; index++) {
-        numbers.push(Math.ceil(Math.random() * 6)) // 
-      }
-      return numbers
-    } else {
-      for (let index = 0; index < diceNumberOf; index++) {
-        numbers.push(Math.ceil(Math.random() * 6)) // 
-      }
-      return numbers
+
+  function generateDieValue() {
+    return Math.ceil(Math.random() * 6)
+  }
+
+  function generateRowValues() { //returns a list of {diceNumberOf} dice values that will be mapped to one row
+    const numbers = []
+    for (let index = 0; index < diceNumberOf; index++) {
+      numbers.push(generateDieValue()) // 
     }
+    return numbers
+  }
 
+  //roll dice button, sets up the row of dice
+  function generateRow() {
+    setDiceRowValues(generateRowValues())
   }
-  //roll dice button
-  function drawDice() {
-    setDice(generateRow())
-  }
+
 
   return (
     <div className="App">
       <h1>Iznet</h1>
       <div className='inputs'>
-        <p>Difficulty level:</p>
-        <div className='difficulty'>
-          <div>
-            <label htmlFor="one">Very Easy(1)</label>
-            <input type="radio" value={1} id='one' name='diceselect' onChange={event => { setDiceNumberOf(event.target.value) }} />
-          </div>
-          <div>
-            <label htmlFor="two">Easy(2)</label>
-            <input type="radio" value={2} id='two' name='diceselect' onChange={event => { setDiceNumberOf(event.target.value) }} />
-          </div>
-          <div>
-            <label htmlFor="three">Normal(3)</label>
-            <input type="radio" value={3} id='three' name='diceselect' onChange={event => { setDiceNumberOf(event.target.value) }} />
-          </div>
-          <div>
-            <label htmlFor="four">Hard(4)</label>
-            <input type="radio" value={4} id='four' name='diceselect' onChange={event => { setDiceNumberOf(event.target.value) }} />
-          </div>
-          <div>
-            <label htmlFor="five">Very Hard(5)</label>
-            <input type="radio" value={5} id='five' name='diceselect' onChange={event => { setDiceNumberOf(event.target.value) }} />
-          </div>
-        </div>
-        <div className='hardcore'>
-          <label htmlFor="hardcore">Hardcore Mode</label>
-          <input name="hardcore" type="checkbox" value={true} onChange={event => { setHardcore(event.target.value) }} />
-        </div>
+        <h2>Difficulty level:</h2>
+        <Difficulty setDiceNumberOf={setDiceNumberOf} />
+        <Hardcore hardcore={hardcore} setHardcore={setHardcore} diceRowValues={diceRowValues} />
       </div>
-      <button onClick={drawDice}>Roll Dice</button>
-      <Dice dice={dice} diceNumberOf={diceNumberOf} />
+      <button onClick={generateRow}>Roll Dice</button>
+      <Dice generateDieValue={generateDieValue} diceRowValues={diceRowValues} diceNumberOf={diceNumberOf} hardcore={hardcore} />
 
+      <div className="log">
+        <h3>log</h3>
+        <p>diceNumberOf: {diceNumberOf}</p>
+        <p>{"{dice}: " + diceRowValues}</p>
+        <p>Hardcore Value: {hardcore}</p>
+      </div>
 
     </div>
   );
