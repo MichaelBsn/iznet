@@ -1,33 +1,40 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import Die from "./components/Die"
 import Dice from "./components/Dice"
 import Hardcore from "./components/Hardcore"
 import Difficulty from './components/Difficulty';
-import Scratch from './components/Scratch';
 
 
 function App() {
-  const [diceRowValues, setDiceRowValues] = useState([]) //list of {diceNumberOf} dice values in one row
   const [diceNumberOf, setDiceNumberOf] = useState(3)
-  const [hardcore, setHardcore] = useState(true)
-
+  const [hardcore, setHardcore] = useState(false)
 
   function generateDieValue() {
     return Math.ceil(Math.random() * 6)
   }
 
-  function generateRowValues() { //returns a list of {diceNumberOf} dice values that will be mapped to one row
-    const numbers = []
-    for (let index = 0; index < diceNumberOf; index++) {
-      numbers.push(generateDieValue()) // 
+  function getDice() {
+    if (hardcore === true) {
+      return <Dice numberOfRows={diceNumberOf} generateDieValue={generateDieValue} diceNumberOf={diceNumberOf} />
+    } else if (hardcore === false) {
+      return <Dice numberOfRows={1} generateDieValue={generateDieValue} diceNumberOf={diceNumberOf} />
+    } else {
+      return <p>getDice() ERROR</p>
     }
-    return numbers
   }
 
-  //roll dice button, sets up the row of dice
-  function generateRow() {
-    setDiceRowValues(generateRowValues())
+  function getDiceTest() {
+    let rows = 1
+    if (hardcore === true) {
+      rows = diceNumberOf
+      console.log("hardcore true")
+    } else if (hardcore === false) {
+      rows = 1
+      console.log("hardcore false")
+    } else {
+      console.log("getDiceTest() error")
+    }
+    return <Dice numberOfRows={rows} generateDieValue={generateDieValue} diceNumberOf={diceNumberOf} />
   }
 
 
@@ -37,15 +44,15 @@ function App() {
       <div className='inputs'>
         <h2>Difficulty level:</h2>
         <Difficulty setDiceNumberOf={setDiceNumberOf} />
-        <Hardcore hardcore={hardcore} setHardcore={setHardcore} diceRowValues={diceRowValues} />
+        <Hardcore setHardcore={setHardcore} />
       </div>
-      <button onClick={generateRow}>Roll Dice</button>
-      <Dice generateDieValue={generateDieValue} diceRowValues={diceRowValues} diceNumberOf={diceNumberOf} hardcore={hardcore} />
+
+      <button>Roll Dice (broken)</button>
+      <div>{getDiceTest()}</div>
 
       <div className="log">
-        <h3>log</h3>
+        <h3>LOGS</h3>
         <p>diceNumberOf: {diceNumberOf}</p>
-        <p>{"{dice}: " + diceRowValues}</p>
         <p>Hardcore Value: {hardcore}</p>
       </div>
 

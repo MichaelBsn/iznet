@@ -23,6 +23,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    border: 2px solid red;
 }
 
 .difficulty div {
@@ -35,11 +36,18 @@ body {
 
 .hardcore {
     margin: 5px 0 5px;
+    border: 2px solid blue;
 }
 
-.face {
+.hardcore-options {
     display: flex;
-    margin: 20px;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.dice-row {
+    display: flex;
+    flex-direction: row;
 }
 
 .dice-elements {
@@ -48,6 +56,11 @@ body {
     align-items: center;
     flex-wrap: wrap;
     width: 650px;
+}
+
+.face {
+    display: flex;
+    margin: 20px;
 }
 
 .die-face {
