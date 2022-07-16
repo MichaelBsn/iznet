@@ -6,54 +6,41 @@ import Difficulty from './components/Difficulty';
 
 
 function App() {
-  const [diceNumberOf, setDiceNumberOf] = useState(3)
-  const [hardcore, setHardcore] = useState(false)
+  const [diceNumberOf, setDiceNumberOf] = useState(10) //this is the number of dice in ONE ROW
+  const [rowsNumberOf, setRowsNumberOf] = useState(5)
+  const [diceValues, setDiceValues] = useState([])
 
+
+  //generates number between 1 and 6. Made into a function for calculating the value of <Die />
   function generateDieValue() {
     return Math.ceil(Math.random() * 6)
   }
-
-  function getDice() {
-    if (hardcore === true) {
-      return <Dice numberOfRows={diceNumberOf} generateDieValue={generateDieValue} diceNumberOf={diceNumberOf} />
-    } else if (hardcore === false) {
-      return <Dice numberOfRows={1} generateDieValue={generateDieValue} diceNumberOf={diceNumberOf} />
-    } else {
-      return <p>getDice() ERROR</p>
-    }
+  function processDie() {
+    return
   }
 
-  function getDiceTest() {
-    let rows = 1
-    if (hardcore === true) {
-      rows = diceNumberOf
-      console.log("hardcore true")
-    } else if (hardcore === false) {
-      rows = 1
-      console.log("hardcore false")
-    } else {
-      console.log("getDiceTest() error")
-    }
-    return <Dice numberOfRows={rows} generateDieValue={generateDieValue} diceNumberOf={diceNumberOf} />
-  }
 
+  function handleButton() {
+    console.log('button clicked')
+    setRowsNumberOf(Math.ceil(Math.random() * 6))
+  }
 
   return (
     <div className="App">
-      <h1>Iznet</h1>
+      <h1>Dice Game</h1>
+      <p>Match all the dice to win</p>
       <div className='inputs'>
-        <h2>Difficulty level:</h2>
-        <Difficulty setDiceNumberOf={setDiceNumberOf} />
-        <Hardcore setHardcore={setHardcore} />
+
+        <button onClick={handleButton}>Roll Dice</button>
       </div>
 
-      <button>Roll Dice (broken)</button>
-      <div>{getDiceTest()}</div>
+      <Dice diceValues={diceValues} setDiceValues={setDiceValues} numberOfRows={rowsNumberOf} generateDieValue={generateDieValue} diceNumberOf={diceNumberOf} />
 
       <div className="log">
         <h3>LOGS</h3>
+
         <p>diceNumberOf: {diceNumberOf}</p>
-        <p>Hardcore Value: {hardcore}</p>
+        <p>rowsNumberOf: {rowsNumberOf}</p>
       </div>
 
     </div>
@@ -61,3 +48,8 @@ function App() {
 }
 
 export default App;
+
+{/* <Difficulty setDiceNumberOf={setDiceNumberOf} />
+<Hardcore diceNumberOf={diceNumberOf} setRowsNumberOf={setRowsNumberOf} /> */}
+
+{/* <Dice numberOfRows={rowsNumberOf} generateDieValue={generateDieValue} diceNumberOf={diceNumberOf} /> */ }

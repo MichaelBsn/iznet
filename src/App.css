@@ -9,6 +9,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    max-width: 320px;
 }
 
 .inputs {
@@ -22,7 +23,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
     border: 2px solid red;
 }
 
@@ -31,7 +32,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .hardcore {
@@ -45,36 +46,24 @@ body {
     flex-direction: row;
 }
 
+/* .dice {
+    width: 300px;
+    height: 300px;
+} */
+
 .dice-row {
     display: flex;
     flex-direction: row;
 }
 
-.dice-elements {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 650px;
-}
 
 .face {
     display: flex;
-    margin: 20px;
+    height: 64px;
+    width: 64px;
 }
 
-.die-face {
-    cursor: pointer;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
-    background-color: #fff;
-    width: 80px;
-    height: 80px;
-    border: 2px solid black;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
+
 
 .divider {
     width: 100%;
@@ -85,10 +74,9 @@ body {
     flex-direction: column;
 }
 
-.dot {
-    display: block;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background-color: #000;
+
+
+svg {
+    height: 64px;
+    width: 64px;
 }

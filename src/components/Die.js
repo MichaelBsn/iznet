@@ -1,72 +1,32 @@
 import React from 'react'
+import { FaDiceOne, FaDiceTwo, FaDiceThree, FaDiceFour, FaDiceFive, FaDiceSix } from 'react-icons/fa';
 
 const Die = (props) => {
     function face() {
         switch (props.value) {
             case 1:
                 return (
-                    <div className='die-face face-one'>
-                        <span className='dot'></span>
-                    </div>
+                    <div><FaDiceOne /></div>
                 );
             case 2:
                 return (
-                    <div className='die-face face-two'>
-                        <span className='dot'></span>
-                        <span className='dot'></span>
-                    </div>
+                    <div><FaDiceTwo /></div>
                 );
             case 3:
                 return (
-                    <div className='die-face face-three'>
-                        <span className='dot'></span>
-                        <span className='dot'></span>
-                        <span className='dot'></span>
-                    </div>
+                    <div><FaDiceThree /></div>
                 );
             case 4:
                 return (
-                    <div className='die-face face-four'>
-                        <div className='divider'>
-                            <span className='dot'></span>
-                            <span className='dot'></span>
-                        </div>
-                        <div className='divider'>
-                            <span className='dot'></span>
-                            <span className='dot'></span>
-                        </div>
-                    </div>
+                    <div><FaDiceFour /></div>
                 );
             case 5:
                 return (
-                    <div className='die-face face-five'>
-                        <div className='divider'>
-                            <span className='dot'></span>
-                            <span className='dot'></span>
-                        </div>
-                        <div className='divider'>
-                            <span className='dot'></span></div>
-                        <div className='divider'>
-                            <span className='dot'></span>
-                            <span className='dot'></span>
-                        </div>
-                    </div>
+                    <div><FaDiceFive /></div>
                 );
             case 6:
                 return (
-                    <div className='die-face face-six'>
-                        <div className='divider'>
-                            <span className='dot'></span>
-                            <span className='dot'></span>
-                            <span className='dot'></span>
-                        </div>
-                        <div className='divider'>
-                            <span className='dot'></span>
-                            <span className='dot'></span>
-                            <span className='dot'></span>
-                        </div>
-
-                    </div>
+                    <div><FaDiceSix /></div>
                 );
         }
 

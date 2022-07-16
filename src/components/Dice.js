@@ -1,13 +1,12 @@
 import DiceRow from "./DiceRow"
 
-const Dice = ({ generateDieValue, diceNumberOf, numberOfRows }) => {
-    //diceRowValues is a list of {diceNumberOf} dice values in one row
+const Dice = ({ diceValues, setDiceValues, generateDieValue, diceNumberOf, numberOfRows }) => {
     function returnAllRows() {
-        const diceRow = <div className="dice-row">
-            <DiceRow diceNumberOf={diceNumberOf} generateDieValue={generateDieValue} /></div>
+        const diceRows = <div className="dice-row">
+            <DiceRow diceValues={diceValues} setDiceValues={setDiceValues} diceNumberOf={diceNumberOf} generateDieValue={generateDieValue} /></div>
         const allRows = []
         for (let index = 0; index < numberOfRows; index++) {
-            allRows.push(diceRow)
+            allRows.push(diceRows)
         }
         return allRows
     }

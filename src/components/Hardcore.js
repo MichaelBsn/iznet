@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Hardcore = ({ setHardcore }) => {
+const Hardcore = ({ diceNumberOf, setRowsNumberOf }) => {
     return (
         <div className='hardcore'>
-            <h2>Hardcore Mode (doesn't work yet)</h2>
+            <h3>Hardcore Mode</h3>
             <div className='hardcore-options'>
                 <div>
                     <label htmlFor="hardcore">On</label>
@@ -11,19 +11,17 @@ const Hardcore = ({ setHardcore }) => {
                         name="hardcore"
                         id='on'
                         type="radio"
-                        value={true}
-                        onChange={event => { setHardcore(event.target.value) }}
-                    />
+                        value={diceNumberOf}
+                        onClick={(event => setRowsNumberOf(event.target.value))} />
                 </div>
                 <div>
                     <label htmlFor="hardcore">Off</label>
                     <input
                         name="hardcore"
-                        id='off'
+                        id='on'
                         type="radio"
-                        value={false}
-                        onChange={event => { setHardcore(event.target.value) }}
-                    />
+                        value={1}
+                        onChange={(event => setRowsNumberOf(event.target.value))} />
                 </div>
             </div>
         </div>
