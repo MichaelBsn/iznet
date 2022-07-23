@@ -6,27 +6,27 @@ const Die = (props) => {
         switch (props.value) {
             case 1:
                 return (
-                    <div><FaDiceOne /></div>
+                    <><FaDiceOne /></>
                 );
             case 2:
                 return (
-                    <div><FaDiceTwo /></div>
+                    <><FaDiceTwo /></>
                 );
             case 3:
                 return (
-                    <div><FaDiceThree /></div>
+                    <><FaDiceThree /></>
                 );
             case 4:
                 return (
-                    <div><FaDiceFour /></div>
+                    <><FaDiceFour /></>
                 );
             case 5:
                 return (
-                    <div><FaDiceFive /></div>
+                    <><FaDiceFive /></>
                 );
             case 6:
                 return (
-                    <div><FaDiceSix /></div>
+                    <><FaDiceSix /></>
                 );
         }
 

@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Dimensions = () => {
+const Dice = () => {
     return (
         <div>Dimensions</div>
     )
 }
 
-export default Dimensions
+export default Dice

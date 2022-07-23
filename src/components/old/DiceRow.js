@@ -15,8 +15,8 @@ const DiceRow = ({ diceValues, setDiceValues, generateDieValue, diceNumberOf }) 
             const die = <Die key={index} value={dieValue} />
             row.push(die)
             dieValues.push(dieValue)
-            setDiceValues([...diceValues, dieValue])
         }
+        setDiceValues([...diceValues, dieValues])
         return row
     }
 

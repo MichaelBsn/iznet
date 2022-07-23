@@ -46,14 +46,10 @@ body {
     flex-direction: row;
 }
 
-/* .dice {
-    width: 300px;
-    height: 300px;
-} */
-
-.dice-row {
+.dice-container {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 
@@ -74,9 +70,25 @@ body {
     flex-direction: column;
 }
 
-
-
 svg {
     height: 64px;
     width: 64px;
+}
+
+.messages {
+    border: 2px solid black;
+    overflow: auto;
+}
+
+.dice-btn {
+    height: 100px;
+    width: 100px;
+}
+
+.chat {
+    width: 300px;
+    height: 300px;
+    border: 2px solid grey;
+    border-radius: 5px;
+    padding: 5px 2px 5px;
 }
